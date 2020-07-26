@@ -8,51 +8,12 @@ header('Content-Type: application/json; charset=utf-8');
 |--------------------------------------------------------------------------
 | API Routes
 |--------------------------------------------------------------------------
-|
 | Here is where you can register API routes for your application. These
 | routes are loaded by the RouteServiceProvider within a group which
 | is assigned the "api" middleware group. Enjoy building your API!
-|
 */
-
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
-Route::get('/teste',function(){
-    $response = new \Illuminate\Http\Response(json_encode(['msg' =>'Minha primeira api']));
-    $response->header('Content-Type','application/json');
-    return $response;
-});
-
-Route::get('/teste',function(){
-    $response = new \Illuminate\Http\Response(json_encode(['msg' =>'Minha primeira api']));
-    $response->header('Content-Type','application/json');
-    return $response;
-});
-
-Route::get('/table',function(){
-   return \App\Pessoa::all();
-});
-
-Route::get('/members',function(){
-    return \App\Member::all();
- });
-
-# Rotas para a tabela interesseAprendizagem
-/*
-Route::get('/interesseaprendizagem',function(){
-    return \App\InteresseAprendizagem::all();
- });
- Route::post('/interesseaprendizagem',function(){
-    return \App\InteresseAprendizagem::all();
- });
- */
- Route::delete('/interesseaprendizagem',function(){
-    return \App\InteresseAprendizagem::all();
- });
-
+ #rota para login
  Route::post('login','Api\\Auth\\LoginJwtController@login_alternativo');
- Route::post('11 ','Api\\Auth\\LoginJwtController@login');
 
  #rotas de interesse de aprendizagem
  Route::get('interesse/{idPessoa} ','InteresseAprendizagemController@show');
@@ -73,7 +34,6 @@ Route::get('/interesseaprendizagem',function(){
   Route::post('certeza/alterar','CertezaProvisoriaController@update');
   Route::get('certeza/apagar/{idCertezaProvisoria} ','CertezaProvisoriaController@destroy');
 
-
 #rotas conteudo
   Route::get('conteudo/{idInteresseAprendizagem}','ConteudoController@show');
   Route::post('conteudo/inserir','ConteudoController@store');
@@ -82,6 +42,37 @@ Route::get('/interesseaprendizagem',function(){
 
 #rotas recomendações
   Route::get('recomendacao/{idInteresseAprendizagem}','RecomendacaoController@show');
-  Route::post('recomendacao/inserir','RecomendacaoController@store');
   Route::post('recomendacao/alterar','RecomendacaoController@update');
-  Route::get('recomendacao/apagar/{idIDuvidaTemporaria} ','RecomendacaoController@destroy');
+  
+#rotas aprendizagem
+  Route::get('aprendizagem/{idInteresseAprendizagem}','AprendizagemController@show');
+  Route::post('aprendizagem/inserir','AprendizagemController@store');
+  Route::post('aprendizagem/alterar','AprendizagemController@update');
+  Route::get('aprendizagem/apagar/{idIDuvidaTemporaria} ','AprendizagemController@destroy');
+
+
+
+
+
+
+Route::middleware('auth:api')->get('/user', function (Request $request) {
+    return $request->user();
+});
+Route::get('/teste',function(){
+    $response = new \Illuminate\Http\Response(json_encode(['msg' =>'Minha primeira api']));
+    $response->header('Content-Type','application/json');
+    return $response;
+});
+
+Route::get('/tpessoa',function(){
+   return \App\Pessoa::all();
+});
+
+Route::get('/members',function(){
+    return \App\Member::all();
+ });
+
+ Route::delete('/interesseaprendizagem',function(){
+    return \App\InteresseAprendizagem::all();
+ });
+ Route::post('11 ','Api\\Auth\\LoginJwtController@login');

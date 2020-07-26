@@ -102,6 +102,8 @@ class CertezaProvisoriaController extends Controller
         //
         $certeza = CertezaProvisoria::find($idCertezaProvisoria);
         if(isset($certeza)){
+            //$certeza->deletado = 1;
+            //$certeza->save();
             $certeza->delete();
         }
     }

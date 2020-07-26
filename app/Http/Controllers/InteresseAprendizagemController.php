@@ -47,13 +47,7 @@ class InteresseAprendizagemController extends Controller
         $interesse->descricaoCompleta = $request->input('descricaoCompleta');
         $interesse->dataCriacao =  $data;
         $interesse->save();
-        
-        
-        
-        //var_dump($interesse);
-        
 
-        //return json_encode(InteresseAprendizagem::all());
     }
 
     /**
